@@ -1,164 +1,161 @@
+let searchParams = window.localStorage.getItem("searchParams");
+
 export default {
   path: {
     main: null,
     id: null,
   },
-  MOCKcards: [
-    {
-      id: 1,
-      title: "Аренда квартиры 1",
-      place: "Батуми",
-      img: "",
-      price: 700,
-      priceName: "$",
-      languages: ["rus", "eng"],
-    },
-    {
-      id: 2,
-      title: "Аренда квартиры 2",
-      place: "Батуми",
-      img: "",
-      price: 300,
-      priceName: "$",
-      languages: ["rus", "eng"],
-    },
-    {
-      id: 3,
-      title: "Аренда квартиры 3",
-      place: "Батуми",
-      img: "",
-      price: 500,
-      priceName: "Р",
-      languages: ["rus", "eng"],
-    },
-    {
-      id: 4,
-      title: "Аренда квартиры 4",
-      place: "Батуми",
-      img: "",
-      price: 1000,
-      priceName: "$",
-      languages: ["rus", "eng"],
-    },
-    {
-      id: 5,
-      title: "Аренда квартиры 3",
-      place: "Батуми",
-      img: "",
-      price: 500,
-      priceName: "Р",
-      languages: ["rus", "eng"],
-    },
-    {
-      id: 6,
-      title: "Аренда квартиры 4",
-      place: "Батуми",
-      img: "",
-      price: 1000,
-      priceName: "$",
-      languages: ["rus", "eng"],
-    },
-  ],
-  menu: [
-    {
-      id: 1,
-      title: "Квартиры",
-      type: "floors",
-    },
-    {
-      id: 2,
-      title: "Комнаты",
-      type: "rooms",
-    },
-    {
-      id: 3,
-      title: "Дома",
-      type: "houses",
-    },
-    {
-      id: 4,
-      title: "Гаражи, парковочные места",
-      type: "garages-parkings",
-    },
-    {
-      id: 5,
-      title: "Коммерческая недвижимость",
-      type: "commercial",
-    },
-    {
-      id: 6,
-      title: "Земельные участки",
-      type: "land-plot",
-    },
-  ],
-  menuSecond: {
-    1: [
+  searchParams: searchParams ? JSON.parse(searchParams) : {},
+  menu: {
+    buildings: [
       {
         id: 1,
-        title: "gg",
-        type: "type",
+        title: "Квартиры",
+        type: "floors",
       },
-      { id: 2, title: "tt", type: "type" },
-      { id: 3, title: "88", type: "type" },
+      {
+        id: 2,
+        title: "Комнаты",
+        type: "rooms",
+      },
+      {
+        id: 3,
+        title: "Дома",
+        type: "houses",
+      },
+      {
+        id: 4,
+        title: "Гаражи, парковочные места",
+        type: "garages-parkings",
+      },
+      {
+        id: 5,
+        title: "Коммерческая недвижимость",
+        type: "commercial",
+      },
+      {
+        id: 6,
+        title: "Земельные участки",
+        type: "land-plot",
+      },
     ],
-    2: [
+    work: [
       {
         id: 1,
-        title: "gg",
-        type: "type",
+        title: "Вакансии",
+        type: "searchWork",
       },
-      { id: 2, title: "tt", type: "type" },
-      { id: 3, title: "88", type: "type" },
+      {
+        id: 2,
+        title: "Резюме",
+        type: "searchWorkers",
+      },
     ],
-    3: [
+    technic: [
       {
         id: 1,
-        title: "gg",
-        type: "type",
+        title: "Телефоны и планшеты",
+        type: "phones-tablets",
       },
-      { id: 2, title: "tt", type: "type" },
-      { id: 3, title: "88", type: "type" },
-    ],
-    4: [
       {
-        id: 1,
-        title: "gg",
-        type: "type",
+        id: 2,
+        title: "Компьютерная техника",
+        type: "computers",
       },
-      { id: 2, title: "tt", type: "type" },
-      { id: 3, title: "88", type: "type" },
-    ],
-    5: [
       {
-        id: 1,
-        title: "gg",
-        type: "type",
+        id: 3,
+        title: "Аудио, видео и тв",
+        type: "audio-video-tv",
       },
-      { id: 2, title: "tt", type: "type" },
-      { id: 3, title: "88", type: "type" },
-    ],
-    6: [
       {
-        id: 1,
-        title: "gg",
-        type: "type",
+        id: 4,
+        title: "Фототехника",
+        type: "photo",
       },
-      { id: 2, title: "tt", type: "type" },
-      { id: 3, title: "88", type: "type" },
+      {
+        id: 5,
+        title: "Приставки и игры",
+        type: "consoles",
+      },
+      {
+        id: 6,
+        title: "Оргтехника",
+        type: "office",
+      },
     ],
   },
-  /* buildings: 
-  work: "Работа",
-  technic: "Электроника",
-  transport: "Транспорт",
-  "for-house": "Для дома и дачи",
-  services: "Услуги",
-  "auto-parts": "Автозапчасти и аксессуары",
-  clothes: "Одежда, обувь и аксессуары",
-  "for-business": "Для бизнеса",
-  "beauty-health": "Красота и здоровье",
-  "for-kids": "Товары для детей",
-  pets: "Животные",
-  hobbys: "Хобби и отдых",
-  handmade: "Ручная работа", */
+
+  menuSecond: {
+    floors: [
+      {
+        id: 1,
+        title: "Продажа",
+        type: "sell",
+        filters: [
+          {
+            title: "Продажа",
+            type: "sell",
+          },
+          {
+            title: "Аренда",
+            type: "rent",
+          },
+        ],
+      },
+      {
+        id: 2,
+        title: "Комнаты",
+        type: "rooms",
+        filters: [
+          {
+            title: "1 комната",
+            type: "room1",
+          },
+          {
+            title: "2 комнаты",
+            type: "room2",
+          },
+          {
+            title: "3 комнаты",
+            type: "room3",
+          },
+          {
+            title: "4 комнаты",
+            type: "room4",
+          },
+          {
+            title: "5 комнат и более",
+            type: "room5",
+          },
+          {
+            title: "Студия",
+            type: "appartment",
+          },
+          {
+            title: "Свободная планировка",
+            type: "free-planing",
+          },
+        ],
+      },
+      {
+        id: 3,
+        title: "Вторичка/Новостройка",
+        type: "in-use",
+        filters: [
+          {
+            title: "Вторичка/Новостройка",
+            checked: false,
+          },
+          {
+            title: "Вторичка",
+            checked: false,
+          },
+          {
+            title: "Новостройка",
+            checked: false,
+          },
+        ],
+      },
+    ],
+  },
 };

@@ -1,0 +1,7 @@
+@font-face {
+  font-family: "interBlack";
+  src: url("./InterBlack.eot");
+  src: url("./InterBlack.eot?#iefix") format("embedded-opentype"),
+    url("./InterBlack.woff") format("woff"),
+    url("./InterBlack.ttf") format("truetype");
+}

@@ -1,6 +1,6 @@
 <template>
   <div class="category">
-    <SearchArea />
+    <router-view @getCards="getCards" />
 
     <ul class="category__list">
       <li class="category__item" v-for="card in MOCKcards" :key="card.id">
@@ -12,8 +12,9 @@
 
 <script>
 import { Component, Vue } from "vue-property-decorator";
-import SearchArea from "@/components/SearchArea.vue";
+import SearchArea from "@/components/SearchArea/SearchArea.vue";
 import Card from "@/components/Card.vue";
+import MOCKcards from "@/store/modules/category/MOCKcards";
 
 @Component({
   components: {
@@ -22,8 +23,21 @@ import Card from "@/components/Card.vue";
   },
 })
 export default class Category extends Vue {
+  //MOCK
   get MOCKcards() {
-    return this.$store.getters["category/getCards"];
+    return MOCKcards;
+  }
+
+  get filterForCards() {
+    if (this.$route.params.stepTwo) {
+      return this.$router.params.stepTwo;
+    } else {
+      return this.$route.params.children;
+    }
+  }
+
+  getCards(params) {
+    console.log(params);
   }
 }
 </script>

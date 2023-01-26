@@ -1,6 +1,7 @@
 @font-face {
-	font-family: 'interSemmiBold';
-	src: 
-		url('Inter-SemiBold.woff') format('woff'), /* Firefox >= 3.6, any other modern browser */
-		url('Inter-SemiBold.ttf') format('truetype'), /* Safari, Android, iOS */
+  font-family: "interSemiBold";
+  src: url("./InterSemiBold.eot");
+  src: url("./InterSemiBold.eot?#iefix") format("embedded-opentype"),
+    url("./InterSemiBold.woff") format("woff"),
+    url("./InterSemiBold.ttf") format("truetype");
 }

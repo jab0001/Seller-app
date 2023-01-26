@@ -1,0 +1,17 @@
+export const translateName = {
+  buildings: "Недвижимость",
+  work: "Работа",
+  technic: "Электроника",
+  transport: "Транспорт",
+  "for-house": "Для дома и дачи",
+  services: "Услуги",
+  "auto-parts": "Автозапчасти и аксессуары",
+  clothes: "Одежда, обувь и аксессуары",
+  "for-business": "Для бизнеса",
+  "beauty-health": "Красота и здоровье",
+  "for-kids": "Товары для детей",
+  pets: "Животные",
+  hobbys: "Хобби и отдых",
+  handmade: "Ручная работа",
+  floors: "Квартиры",
+};

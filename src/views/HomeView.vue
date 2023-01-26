@@ -16,6 +16,7 @@
 import { Component, Vue } from "vue-property-decorator";
 import Categories from "@/components/Categories.vue";
 import Card from "@/components/Card.vue";
+import MOCKcards from "@/store/modules/category/MOCKcards";
 
 @Component({
   components: {
@@ -24,8 +25,16 @@ import Card from "@/components/Card.vue";
   },
 })
 export default class Home extends Vue {
+  //MOCK
   get MOCKcards() {
-    return this.$store.getters["category/getCards"];
+    return MOCKcards;
+  }
+
+  mounted() {
+    if (localStorage.getItem("openedFirstMenu"))
+      localStorage.removeItem("openedFirstMenu");
+    if (localStorage.getItem("searchParams"))
+      localStorage.removeItem("searchParams");
   }
 }
 </script>
@@ -33,22 +42,20 @@ export default class Home extends Vue {
 <style scoped lang="scss">
 .home {
   &__title {
-    padding-left: 103px;
-    font-family: "interMedium", sans-serif;
+    padding-left: 102px;
+    font-family: "interSemiBold", sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 20px;
     line-height: 24px;
-    letter-spacing: 0.4px;
-    margin-top: 6px;
+    margin-top: 28px;
   }
 
   &__list {
     display: flex;
     padding: 28px 90px;
-    /* justify-content: space-between; */
     flex-wrap: wrap;
-    gap: 25px 36px;
+    gap: 25px 35px;
   }
 }
 </style>

@@ -18,6 +18,14 @@
             </div>
           </router-link>
         </div>
+        <!-- eslint-disable-next-line vue/no-useless-template-attributes -->
+        <template slot="prevButton" class="prevButton">
+          <i class="icon-angle-left icon-left"></i>
+        </template>
+        <!-- eslint-disable-next-line vue/no-useless-template-attributes -->
+        <template slot="nextButton" class="nextButton">
+          <i class="icon-angle-right icon-right"></i>
+        </template>
       </agile>
     </div>
   </div>
@@ -95,17 +103,50 @@ export default class Categories extends Vue {
 <style lang="scss">
 .agile {
   &__actions {
-    position: relative;
-    bottom: 116px;
+    width: 100%;
+
+    .agile__nav-button {
+      border: none;
+      width: 45px;
+      height: 45px;
+      background: #ffffff;
+      box-shadow: 1px 1px 10px 3px rgba(0, 0, 0, 0.06);
+      border-radius: 15px;
+      cursor: pointer;
+      position: absolute;
+      top: 37%;
+
+      &--next {
+        right: 0;
+      }
+
+      &--prev {
+        left: 0;
+      }
+
+      &:hover {
+        background: grey;
+
+        i {
+          color: #fff;
+        }
+      }
+    }
   }
 }
 </style>
 
 <style lang="scss" scoped>
+.icon {
+  &-right,
+  &-left {
+    font-size: 20px;
+  }
+}
 .categories {
   margin-top: 50px;
-  padding-left: 74px;
-  padding-right: 75px;
+  padding-left: 68px;
+  padding-right: 69px;
 }
 .slider {
   &__container {
@@ -117,7 +158,15 @@ export default class Categories extends Vue {
   }
 
   &__title {
+    padding-top: 17px;
+    font-family: "interSemiBold", sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
     text-align: center;
+
+    color: #000000;
   }
 }
 </style>

@@ -1,6 +1,7 @@
 @font-face {
-	font-family: 'interBold';
-	src: 
-		url('Inter-Bold.woff') format('woff'), /* Firefox >= 3.6, any other modern browser */
-		url('Inter-Bold.ttf') format('truetype'), /* Safari, Android, iOS */
+  font-family: "interBold";
+  src: url("./InterBold.eot");
+  src: url("./InterBold.eot?#iefix") format("embedded-opentype"),
+    url("./InterBold.woff") format("woff"),
+    url("./InterBold.ttf") format("truetype");
 }

@@ -1,9 +1,11 @@
-@import "fonts/interBold/style.css";
-@import "fonts/interExtraBold/style.css";
-@import "fonts/interMedium/style.css";
-@import "fonts/interRegular/style.css";
-@import "fonts/interSemiBold/style.css";
-
+@import "fonts/InterBlack/style.css";
+@import "fonts/InterBold/style.css";
+@import "fonts/InterExtraBold/style.css";
+@import "fonts/InterExtraLight/style.css";
+@import "fonts/InterLight/style.css";
+@import "fonts/InterRegular/style.css";
+@import "fonts/InterSemiBold/style.css";
+@import "fonts/InterThin/style.css";
 
 body {
   margin: 0;
@@ -24,4 +26,8 @@ ul {
   margin: 0;
   padding: 0;
   list-style: none;
+}
+
+a {
+    text-decoration: none;
 }

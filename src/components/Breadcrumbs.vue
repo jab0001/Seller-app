@@ -15,24 +15,27 @@
 </template>
 
 <script>
-import { Component, Prop, Vue } from "vue-property-decorator";
+import { Component, Vue } from "vue-property-decorator";
+import { translateName } from "@/helpers/translateName.js";
 
 @Component({})
 export default class Breadcrumbs extends Vue {
-  @Prop({ Type: String, default: "" }) name;
   get breadcrumbs() {
-    return [
+    let resultUrls = [
       { name: "Главная", url: "/" },
       {
-        name: this.name,
-        url: this.currentLocation,
+        name: translateName[this.$route.params.children],
+        url: `/category/${this.$route.params.children}`,
       },
     ];
-  }
+    if (this.$route.params.stepTwo) {
+      resultUrls.push({
+        name: translateName[this.$route.params.stepTwo],
+        url: `/category/${this.$route.params.children}/${this.$route.params.stepTwo}`,
+      });
+    }
 
-  get currentLocation() {
-    const name = localStorage.getItem("filterCategory");
-    return name;
+    return resultUrls;
   }
 }
 </script>

@@ -6,7 +6,7 @@
           class="header__logo"
           src="/static/img/seller.svg"
           width="140"
-          height="48"
+          height="45"
           alt="logo logo-seller"
         />
       </router-link>
@@ -27,9 +27,7 @@
             {{ btn.text }}
           </li>
         </ul>
-        <button class="header__btn">
-          +&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;Разместить объявление
-        </button>
+        <button class="header__btn">+&ensp;&ensp;Разместить объявление</button>
       </div>
     </header>
     <div class="app__wrapper">
@@ -136,13 +134,13 @@ export default class App extends Vue {
 .header {
   background: white;
   display: flex;
-  padding: 8px 91px 20px 83px;
+  padding: 23px 91px 19px 83px;
   justify-content: space-between;
 
   &__list {
     display: flex;
     align-items: center;
-    margin-right: 12px;
+    margin-right: 15px;
   }
 
   &__wrapper {
@@ -150,13 +148,19 @@ export default class App extends Vue {
   }
 
   &__item {
-    margin-right: 32px;
+    margin-right: 30px;
     cursor: pointer;
     height: fit-content;
     font-family: "interRegular", sans-serif;
     font-weight: 400;
     font-size: 14px;
     line-height: 17px;
+    display: flex;
+    align-items: center;
+
+    &:first-child {
+      margin-right: 14px;
+    }
 
     i {
       position: relative;

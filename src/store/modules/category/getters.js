@@ -1,3 +1,5 @@
+import state from "./state";
+
 export default {
   getCards(state) {
     return state.MOCKcards;
@@ -10,5 +12,8 @@ export default {
   },
   getMenuSecond(state) {
     return state.menuSecond;
+  },
+  getSearchParams() {
+    return state.searchParams;
   },
 };

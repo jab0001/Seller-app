@@ -1,5 +1,11 @@
 <template>
-  <div class="card">
+  <router-link
+    class="card"
+    tag="div"
+    :to="{
+      path: `/announcement/${card.category}/${card.id}`,
+    }"
+  >
     <div class="card__img"></div>
     <div class="card__wrapper">
       <div class="card__wrapper-info">
@@ -40,7 +46,7 @@
         </li>
       </ul>
     </div>
-  </div>
+  </router-link>
 </template>
 
 <script>
@@ -69,8 +75,8 @@ export default class Card extends Vue {
 
 <style lang="scss" scoped>
 .card {
-  width: 287px;
-  height: 367px;
+  max-width: 287px;
+  min-height: 367px;
   box-shadow: 5px 5px 10px 8px rgba(0, 0, 0, 0.06);
   border-radius: 15px;
   padding: 14px 13px;
@@ -94,7 +100,6 @@ export default class Card extends Vue {
     font-weight: 400;
     font-size: 14px;
     line-height: 17px;
-    letter-spacing: 0.4px;
 
     color: rgba(0, 0, 0, 0.4);
     span {
@@ -114,12 +119,11 @@ export default class Card extends Vue {
   }
 
   &__title {
-    font-family: "interMedium", sans-serif;
+    font-family: "interSemiBold", sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 14px;
     line-height: 17px;
-    letter-spacing: 0.4px;
     margin-top: 10px;
     margin-left: 10px;
   }
@@ -132,7 +136,6 @@ export default class Card extends Vue {
     font-weight: 400;
     font-size: 14px;
     line-height: 17px;
-    letter-spacing: 0.4px;
     padding-left: 13px;
     margin-top: 7px;
 
@@ -154,7 +157,6 @@ export default class Card extends Vue {
     font-weight: 800;
     font-size: 20px;
     line-height: 24px;
-    letter-spacing: 2.4px;
     margin-left: 11px;
     margin-top: 4px;
 

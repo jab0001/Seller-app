@@ -1,69 +1,129 @@
 <template>
-  <div class="accordion-item">
-    <div class="header" v-on:click="toggle">
-      <slot name="header"></slot>
-      <div></div>
+  <li class="accordion__item">
+    <div
+      class="accordion__trigger"
+      :class="{ accordion__trigger_active: visible }"
+      @click="open"
+      :style="`${isStepTwo ? 'justify-content: flex-start' : ''}`"
+    >
+      <i
+        v-if="isStepTwo"
+        :class="`icon-angle-${
+          visible ? 'down' : 'left'
+        } icon-angle-${isStepTwo}`"
+      ></i>
+      <slot name="accordion-trigger"></slot>
+      <i
+        v-if="isStepOne"
+        :class="`icon-angle-${
+          visible ? 'down' : 'up'
+        } icon-angle-${!isStepOne}`"
+      ></i>
     </div>
+
     <transition
       name="accordion"
-      v-on:before-enter="beforeEnter"
-      v-on:enter="enter"
-      v-on:before-leave="beforeLeave"
-      v-on:leave="leave"
+      @enter="start"
+      @after-enter="end"
+      @before-leave="start"
+      @after-leave="end"
     >
-      <div class="body" v-show="show">
-        <a href="#" class="body-inner">
-          <slot></slot>
-        </a>
+      <div class="accordion__content" v-show="visible">
+        <ul>
+          <slot name="accordion-content"></slot>
+        </ul>
       </div>
     </transition>
-  </div>
+  </li>
 </template>
 
 <script>
-import { Component, Vue } from "vue-property-decorator";
-
-@Component()
-export default class AccordionItem extends Vue {
-  show = false;
-
-  toggle() {
-    this.show = !this.show;
-  }
-
-  beforeEnter(el) {
-    el.style.height = "0";
-  }
-
-  enter(el) {
-    el.style.height = el.scrollHeight + "px";
-  }
-
-  beforeLeave(el) {
-    el.style.height = el.scrollHeight + "px";
-  }
-
-  leave(el) {
-    el.style.height = "0";
-  }
-}
+export default {
+  props: {
+    isStepOne: {
+      type: Boolean,
+      default: true,
+    },
+    isStepTwo: {
+      type: Boolean,
+      default: false,
+    },
+    step: {
+      type: String,
+      default: "",
+    },
+  },
+  inject: ["Accordion"],
+  data() {
+    return {
+      index: null,
+    };
+  },
+  computed: {
+    visible() {
+      return this.index == this.Accordion.active;
+    },
+  },
+  methods: {
+    open() {
+      if (this.visible) {
+        this.Accordion.active = null;
+      } else {
+        this.Accordion.active = this.index;
+      }
+    },
+    start(el) {
+      el.style.height = el.scrollHeight + "px";
+    },
+    end(el) {
+      el.style.height = "";
+    },
+  },
+  created() {
+    this.index = this.Accordion.count++;
+  },
+};
 </script>
 
 <style lang="scss" scoped>
-.accordion-item .body-inner {
-  padding: 8px;
-  overflow-wrap: break-word;
-  /*   white-space: pre-wrap; */
+.accordion__trigger {
+  display: flex;
+  justify-content: space-between;
 
-  @media (max-width: 600px) {
-    font-size: 16px;
-    line-height: 20px;
+  .icon-angle-false::before {
+    margin-right: 0;
+    font-size: 20px;
+    position: relative;
+    left: 3px;
   }
 
-  @media (min-width: 601px) and (max-width: 1279px) {
-    padding: 1vw;
-    font-size: 1.9vw;
-    line-height: 2vw;
+  .icon-angle-true::before {
+    margin-right: 0;
+    margin-left: 0;
+    font-size: 16px;
+    position: relative;
+    right: 3px;
+    top: -1px;
+  }
+}
+
+.accordion-enter-active,
+.accordion-leave-active {
+  will-change: height, opacity;
+  transition: height 0.3s ease, opacity 0.3s ease;
+  overflow: hidden;
+}
+
+.accordion-enter,
+.accordion-leave-to {
+  height: 0 !important;
+  opacity: 0;
+}
+
+.accordion__content {
+  ul {
+    display: flex;
+    flex-direction: column;
   }
 }
 </style>

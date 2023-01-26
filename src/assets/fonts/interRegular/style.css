@@ -1,6 +1,7 @@
 @font-face {
-	font-family: 'interRegular';
-	src: 
-		url('Inter-Regular.woff') format('woff'), /* Firefox >= 3.6, any other modern browser */
-		url('Inter-Regular.ttf') format('truetype'), /* Safari, Android, iOS */
+  font-family: "interRegular";
+  src: url("./InterRegular.eot");
+  src: url("./InterRegular.eot?#iefix") format("embedded-opentype"),
+    url("./InterRegular.woff") format("woff"),
+    url("./InterRegular.ttf") format("truetype");
 }
