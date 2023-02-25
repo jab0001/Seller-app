@@ -25,6 +25,7 @@ import { Component, Vue } from "vue-property-decorator";
 import AccordionList from "@/components/Accordion/AccordionList.vue";
 import AccordionItem from "@/components/Accordion/AccordionItem.vue";
 import { translateName } from "@/helpers/translateName.js";
+import menu from "@/helpers/menuStepOne.js";
 
 @Component({
   components: {
@@ -34,11 +35,7 @@ import { translateName } from "@/helpers/translateName.js";
 })
 export default class StepOne extends Vue {
   get menuList() {
-    return this.menu[this.currentStep];
-  }
-
-  get menu() {
-    return this.$store.getters["category/getMenu"];
+    return menu[this.currentStep];
   }
 
   get currentStep() {
@@ -66,8 +63,9 @@ export default class StepOne extends Vue {
 <style lang="scss" scoped>
 .stepOne {
   cursor: pointer;
-  padding: 12px 0 10px 0;
+  padding: 12px 0 25px 0;
   position: relative;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
 
   &__title {
     margin-bottom: 21px;

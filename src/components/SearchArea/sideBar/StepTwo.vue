@@ -19,14 +19,20 @@
                 </h3>
               </template>
               <template slot="accordion-content">
-                <div v-for="(filter, index) in item.filters" :key="index">
+                <div
+                  v-for="(filter, index) in item.filters"
+                  :key="index"
+                  class="stepTwo__content"
+                >
                   <input
                     :id="filter.type"
                     v-model="params[filter.type]"
                     type="checkbox"
                     @change="saveFilter(currentPage)"
                   />
-                  <label :for="filter.type">{{ filter.title }}</label>
+                  <label class="stepTwo__label" :for="filter.type">{{
+                    filter.title
+                  }}</label>
                 </div></template
               ></AccordionItem
             >
@@ -42,6 +48,7 @@ import { Component, Vue, Prop } from "vue-property-decorator";
 import AccordionList from "@/components/Accordion/AccordionList.vue";
 import AccordionItem from "@/components/Accordion/AccordionItem.vue";
 import { translateName } from "@/helpers/translateName.js";
+import menuSecond from "@/helpers/menuStepTwo.js";
 
 @Component({
   components: {
@@ -54,7 +61,7 @@ export default class StepTwo extends Vue {
   /* params = {}; */
 
   get menuList() {
-    return this.menuSecond[this.currentPage];
+    return menuSecond[this.currentPage];
   }
 
   get menuOpened() {
@@ -64,10 +71,6 @@ export default class StepTwo extends Vue {
       open = parseInt(id);
     }
     return open;
-  }
-
-  get menuSecond() {
-    return this.$store.getters["category/getMenuSecond"];
   }
 
   setMenuOpen(id) {
@@ -102,12 +105,37 @@ export default class StepTwo extends Vue {
 <style lang="scss" scoped>
 .stepTwo {
   cursor: pointer;
-  padding: 12px 0 10px 0;
+  padding: 12px 0 25px 0;
   position: relative;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+
+  &__label {
+    font-family: "InterThin", sans-serif;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 17px;
+
+    color: #000000;
+  }
+
+  &__content {
+    padding-left: 16px;
+    margin-bottom: 2px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    input {
+      margin: 0;
+      margin-right: 8px;
+    }
+  }
 
   &__title {
     margin-bottom: 20px;
-    font-family: "interRegular", sans-serif;
+    font-family: "InterRegular", sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 16px;
@@ -116,7 +144,6 @@ export default class StepTwo extends Vue {
     color: #000000;
 
     &-second {
-      margin-bottom: 7px;
       font-family: "InterThin", sans-serif;
       font-style: normal;
       font-weight: 300;

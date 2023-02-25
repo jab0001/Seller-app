@@ -17,9 +17,37 @@
         @transferSearch="searchUpdate"
         @getCards="getCards"
       />
-    </div>
 
-    <button v-if="clearBtn" @click="clearSearch">btn</button>
+      <div class="search-area__language language">
+        <label class="typo__label">Simple select / dropdown</label>
+        <multiselect
+          v-model="value"
+          :options="options"
+          :multiple="true"
+          :close-on-select="false"
+          :clear-on-select="false"
+          :preserve-search="true"
+          placeholder="Pick some"
+          label="name"
+          track-by="name"
+          :preselect-first="true"
+        >
+          <template slot="selection" slot-scope="{ values, isOpen }"
+            ><span
+              class="multiselect__single"
+              v-if="values.length"
+              v-show="!isOpen"
+              >{{ values.length }} options selected</span
+            ></template
+          >
+        </multiselect>
+        <pre class="language-json"><code>{{ value  }}</code></pre>
+      </div>
+
+      <button class="search-area__btn" v-if="clearBtn" @click="clearSearch">
+        Показать
+      </button>
+    </div>
   </div>
 </template>
 
@@ -28,15 +56,26 @@ import { Component, Vue } from "vue-property-decorator";
 import Breadcrumbs from "@/components/Breadcrumbs.vue";
 import AccordionList from "@/components/Accordion/AccordionList.vue";
 import { translateName } from "@/helpers/translateName.js";
+import Multiselect from "vue-multiselect";
 
 @Component({
   components: {
     Breadcrumbs,
     AccordionList,
+    Multiselect,
   },
 })
 export default class SearchArea extends Vue {
   searchParams = {};
+  value = [];
+  options = [
+    { name: "Vue.js", language: "JavaScript" },
+    { name: "Adonis", language: "JavaScript" },
+    { name: "Rails", language: "Ruby" },
+    { name: "Sinatra", language: "Ruby" },
+    { name: "Laravel", language: "PHP" },
+    { name: "Phoenix", language: "Elixir" },
+  ];
 
   get menuId() {
     return this.$store.getters["category/getPath"];
@@ -96,12 +135,28 @@ export default class SearchArea extends Vue {
 
 <style lang="scss" scoped>
 .search-area {
+  display: flex;
+  flex-direction: column;
+
+  &__btn {
+    width: 100%;
+    max-height: 47px;
+    border: none;
+    padding-top: 15px;
+    padding-bottom: 15px;
+
+    background: rgba(27, 61, 46, 0.8);
+    border-radius: 15px;
+    color: #fff;
+  }
+
   &__wrapper {
+    display: flex;
+    flex-direction: column;
     background: #ffffff;
     box-shadow: 5px 5px 10px 8px rgba(0, 0, 0, 0.06);
     border-radius: 15px;
     width: 288px;
-    height: 616px;
     padding: 14px 17px 42px;
     box-sizing: border-box;
     margin-top: 12px;
@@ -153,7 +208,8 @@ export default class SearchArea extends Vue {
 
     i {
       position: absolute;
-      left: -7px;
+      left: -9px;
+      font-size: 19px;
     }
   }
 }

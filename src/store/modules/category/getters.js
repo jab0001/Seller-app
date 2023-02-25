@@ -7,12 +7,12 @@ export default {
   getPath(state) {
     return state.path;
   },
-  getMenu(state) {
+  /* getMenu(state) {
     return state.menu;
   },
   getMenuSecond(state) {
     return state.menuSecond;
-  },
+  }, */
   getSearchParams() {
     return state.searchParams;
   },
